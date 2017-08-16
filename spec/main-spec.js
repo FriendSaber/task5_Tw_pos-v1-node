@@ -1,4 +1,7 @@
-const main = require('../main/main');
+const printInventory = require('../main/main');
+const dat = require('../main/datbase');
+var loadAllItems = dat.loadAllItems;
+//var loadPromotions = dat.loadPromotions;
 
 describe('pos', function () {
     var allItems;
@@ -23,7 +26,7 @@ describe('pos', function () {
 
         spyOn(console, 'log');
 
-        printInventory(inputs);
+        printInventory( inputs);
 
         var expectText =
             '***<没钱赚商店>购物清单***\n' +
@@ -38,6 +41,7 @@ describe('pos', function () {
             '总计：51.00(元)\n' +
             '节省：7.50(元)\n' +
             '**********************';
+
 
         expect(console.log).toHaveBeenCalledWith(expectText);
     });
